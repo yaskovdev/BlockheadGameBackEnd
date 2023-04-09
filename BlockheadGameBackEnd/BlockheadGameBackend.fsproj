@@ -6,19 +6,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Dictionary.fs"/>
-        <Compile Include="Field.fs"/>
-        <Compile Include="WeatherForecast.fs"/>
-        <Compile Include="Controllers/WeatherForecastController.fs"/>
-        <Compile Include="Program.fs"/>
+        <Compile Include="Dictionary.fs" />
+        <Compile Include="Field.fs" />
+        <Compile Include="WeatherForecast.fs" />
+        <Compile Include="Controllers\BlockheadGameController.fs" />
+        <Compile Include="Program.fs" />
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="dictionary.txt" CopyToOutputDirectory="Always"/>
+        <Content Include="dictionary.txt" CopyToOutputDirectory="Always" />
         <Content Include="..\.dockerignore">
             <Link>.dockerignore</Link>
         </Content>
-        <Content Include="Dockerfile"/>
+        <Content Include="Dockerfile" />
     </ItemGroup>
 
 </Project>
