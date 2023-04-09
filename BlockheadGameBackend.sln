@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BlockheadGameBackend", "BlockheadGameBackend\BlockheadGameBackend.fsproj", "{A74E2E0F-C7B0-42DD-8D3C-948CFE4115E8}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BlockheadGameBackEnd", "BlockheadGameBackEnd\BlockheadGameBackEnd.fsproj", "{A74E2E0F-C7B0-42DD-8D3C-948CFE4115E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

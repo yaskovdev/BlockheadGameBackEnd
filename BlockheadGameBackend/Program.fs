@@ -1,4 +1,4 @@
-namespace BlockheadGameBackend
+namespace BlockheadGameBackEnd
 #nowarn "20"
 open System
 open System.Collections.Generic

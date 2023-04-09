@@ -5,16 +5,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["BlockheadGameBackend/BlockheadGameBackend.fsproj", "BlockheadGameBackend/"]
-RUN dotnet restore "BlockheadGameBackend/BlockheadGameBackend.fsproj"
+COPY ["BlockheadGameBackEnd/BlockheadGameBackEnd.fsproj", "BlockheadGameBackEnd/"]
+RUN dotnet restore "BlockheadGameBackEnd/BlockheadGameBackEnd.fsproj"
 COPY . .
-WORKDIR "/src/BlockheadGameBackend"
-RUN dotnet build "BlockheadGameBackend.fsproj" -c Release -o /app/build
+WORKDIR "/src/BlockheadGameBackEnd"
+RUN dotnet build "BlockheadGameBackEnd.fsproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "BlockheadGameBackend.fsproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "BlockheadGameBackEnd.fsproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "BlockheadGameBackend.dll"]
+ENTRYPOINT ["dotnet", "BlockheadGameBackEnd.dll"]

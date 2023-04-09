@@ -1,4 +1,4 @@
-namespace BlockheadGameBackend
+namespace BlockheadGameBackEnd
 
 open System
 

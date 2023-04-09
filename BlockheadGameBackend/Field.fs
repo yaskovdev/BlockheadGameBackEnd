@@ -1,4 +1,4 @@
-module BlockheadGameBackend.Field
+module BlockheadGameBackEnd.Field
 
 let replaceRow field index newRow =
     List.take index field @ [ newRow ] @ List.skip (index + 1) field

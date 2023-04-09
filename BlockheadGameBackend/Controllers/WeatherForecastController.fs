@@ -1,9 +1,9 @@
-﻿namespace BlockheadGameBackend.Controllers
+﻿namespace BlockheadGameBackEnd.Controllers
 
 open System
 open Microsoft.AspNetCore.Mvc
 open Microsoft.Extensions.Logging
-open BlockheadGameBackend
+open BlockheadGameBackEnd
 
 [<ApiController>]
 [<Route("[controller]")>]

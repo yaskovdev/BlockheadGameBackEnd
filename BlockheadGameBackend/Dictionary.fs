@@ -1,4 +1,4 @@
-module BlockheadGameBackend.Dictionary
+module BlockheadGameBackEnd.Dictionary
 
 open System.IO
 open System.Reflection
