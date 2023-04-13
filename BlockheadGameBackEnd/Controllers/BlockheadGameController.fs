@@ -17,3 +17,6 @@ type BlockheadGameController(logger: ILogger<BlockheadGameController>) =
 
     [<HttpGet("/words")>]
     member _.Words() = Dictionary.wordsOfLength 5 dictionary
+
+    [<HttpGet("/prefixes")>]
+    member _.Prefixes() = Dictionary.toPrefixDictionary Dictionary.readDictionary
