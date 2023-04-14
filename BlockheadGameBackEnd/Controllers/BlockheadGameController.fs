@@ -20,3 +20,6 @@ type BlockheadGameController(logger: ILogger<BlockheadGameController>) =
 
     [<HttpGet("/prefixes")>]
     member _.Prefixes() = Dictionary.toPrefixDictionary Dictionary.readDictionary
+
+    [<HttpGet("/alphabet")>]
+    member _.Alphabet() = Game.alphabet
