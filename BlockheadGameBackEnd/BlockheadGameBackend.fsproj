@@ -9,6 +9,7 @@
         <Compile Include="Dictionary.fs" />
         <Compile Include="Field.fs" />
         <Compile Include="MoveRequest.fs" />
+        <Compile Include="MoveResponse.fs" />
         <Compile Include="Game.fs" />
         <Compile Include="Controllers\BlockheadGameController.fs" />
         <Compile Include="Program.fs" />
