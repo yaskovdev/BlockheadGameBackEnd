@@ -17,5 +17,5 @@ let private prefixes (word: string) =
 let toPrefixDictionary (dictionary: Set<string>) =
     Set.ofSeq (Seq.collect prefixes dictionary)
 
-let wordsOfLength (n: int) (dictionary: Set<string>) : string list =
+let wordsOfLength (n: int) (dictionary: Set<string>) : list<string> =
     Set.toList (Set.filter (hasLength n) dictionary)
