@@ -24,7 +24,7 @@ let private createField (initialWord: string) : Field =
     replaceRow (createEmptyField initialWord.Length) (initialWord.Length / 2) (Seq.toList initialWord)
 
 let createNewField dictionary size =
-    let candidates = Dictionary.wordsOfLength size dictionary
+    let candidates = Set.toList (Dictionary.wordsOfLength size dictionary)
     let random = Random()
     createField candidates[random.Next(candidates.Length)]
 
