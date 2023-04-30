@@ -14,8 +14,7 @@ type BlockheadGameController(logger: ILogger<BlockheadGameController>) =
 
     let fromRequestField (field: seq<string>) = Seq.toList (Seq.map Seq.toList field)
 
-    let toRequestField field =
-        Seq.map (fun row -> String(List.toArray row)) field
+    let toRequestField = Seq.map (fun row -> String(List.toArray row))
 
     let dictionary = Dictionary.readDictionary
 
@@ -23,15 +22,6 @@ type BlockheadGameController(logger: ILogger<BlockheadGameController>) =
 
     [<HttpGet("/api/field")>]
     member _.Field([<Optional; DefaultParameterValue(5)>] size: int) = Field.createNewField dictionary size
-
-    [<HttpGet("/api/words")>]
-    member _.Words() = Dictionary.wordsOfLength 5 dictionary
-
-    [<HttpGet("/api/prefixes")>]
-    member _.Prefixes() = prefixDictionary
-
-    [<HttpGet("/api/alphabet")>]
-    member _.Alphabet() = Game.alphabet
 
     [<HttpPost("/api/move-requests")>]
     member _.MakeMove(request: MoveRequest) =

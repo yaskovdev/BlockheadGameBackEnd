@@ -20,7 +20,7 @@ let private emptyCell = '.'
 let private createEmptyField size =
     [ for _ in 1..size -> [ for _ in 1..size -> emptyCell ] ]
 
-let createField (initialWord: string) : Field =
+let private createField (initialWord: string) : Field =
     replaceRow (createEmptyField initialWord.Length) (initialWord.Length / 2) (Seq.toList initialWord)
 
 let createNewField dictionary size =
