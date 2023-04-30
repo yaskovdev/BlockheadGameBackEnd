@@ -7,7 +7,6 @@ open Microsoft.Extensions.Logging
 open BlockheadGameBackEnd
 open BlockheadGameBackEnd.MoveResponse
 
-
 [<ApiController>]
 type BlockheadGameController(logger: ILogger<BlockheadGameController>) =
     inherit ControllerBase()
@@ -21,11 +20,12 @@ type BlockheadGameController(logger: ILogger<BlockheadGameController>) =
     let prefixDictionary = Dictionary.toPrefixDictionary dictionary
 
     [<HttpGet("/api/field")>]
-    member _.Field([<Optional; DefaultParameterValue(5)>] size: int) = Field.createNewField dictionary size
+    member _.Field([<Optional; DefaultParameterValue(5)>] size: int) =
+        toRequestField (Field.createNewField dictionary size)
 
     [<HttpPost("/api/move-requests")>]
     member _.MakeMove(request: MoveRequest) =
         let success, updatedField, path, word, (cell, letter) =
-            Game.makeMove prefixDictionary dictionary request.Difficulty request.UsedWords (fromRequestField request.Field)
+            Game.makeMove prefixDictionary dictionary 0 request.UsedWords (fromRequestField request.Field)
 
         MoveResponse([ fst cell; snd cell ], Char.ToString(letter), Seq.map (fun (x, y) -> [ x; y ]) path, success, toRequestField updatedField, word)

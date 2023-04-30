@@ -1,5 +1,7 @@
 namespace BlockheadGameBackEnd
+
 #nowarn "20"
+
 open System
 open System.Collections.Generic
 open System.IO
@@ -19,14 +21,21 @@ module Program =
 
     [<EntryPoint>]
     let main args =
-
         let builder = WebApplication.CreateBuilder(args)
+
+        builder.Services.AddCors(fun options -> 
+            options.AddPolicy("AllowAll", fun builder -> 
+                 builder.AllowAnyHeader()
+                        .AllowAnyOrigin()
+                        .WithMethods("GET", "POST") |> ignore))
 
         builder.Services.AddControllers()
 
         let app = builder.Build()
 
         app.UseHttpsRedirection()
+        
+        app.UseCors("AllowAll");
 
         app.UseAuthorization()
         app.MapControllers()
