@@ -25,7 +25,8 @@ type BlockheadGameController(logger: ILogger<BlockheadGameController>) =
 
     [<HttpPost("/api/move-requests")>]
     member _.MakeMove(request: MoveRequest) =
+        logger.LogInformation("Difficulty is " + request.Difficulty.ToString())
         let success, updatedField, path, word, (cell, letter) =
-            Game.makeMove prefixDictionary dictionary 0 request.UsedWords (fromRequestField request.Field)
+            Game.makeMove prefixDictionary dictionary request.Difficulty request.UsedWords (fromRequestField request.Field)
 
         MoveResponse([ fst cell; snd cell ], Char.ToString(letter), Seq.map (fun (x, y) -> [ x; y ]) path, success, toRequestField updatedField, word)

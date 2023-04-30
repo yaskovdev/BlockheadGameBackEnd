@@ -2,6 +2,11 @@
 
 open System
 
+type Difficulty =
+    | Easy
+    | Medium
+    | Hard
+
 type private Move = Field.Cell * char
 
 type private Path = seq<Field.Cell>
@@ -9,6 +14,12 @@ type private Path = seq<Field.Cell>
 type private WordPath = string * Path
 
 let private contains x = Seq.exists ((=) x)
+
+let private wordPickRange (difficulty: Difficulty) : int =
+    match difficulty with
+    | Easy -> 30
+    | Medium -> 13
+    | Hard -> 0
 
 let private appendCell (field: Field.Field) ((word, path): WordPath) (x, y) : WordPath =
     (word + Char.ToString(field[x][y]), Seq.append [ (x, y) ] path)
@@ -51,7 +62,7 @@ let makeMove prefixDictionary dictionary difficulty usedWords field : bool * Fie
     else
         let longestWordsFirst = Seq.toList (Seq.sortWith (fun (_, a, _) (_, b, _) -> (Seq.length b).CompareTo(Seq.length a)) foundWords)
         let random = Random()
-        let wordIndex = random.Next(Math.Min(difficulty + 1, Seq.length longestWordsFirst))
+        let wordIndex = random.Next(Math.Min((wordPickRange difficulty) + 1, Seq.length longestWordsFirst))
         let oneOfLongestWord = longestWordsFirst[wordIndex]
         let path, word, (cell, letter) = oneOfLongestWord
         let updatedField = Field.replaceLetter field cell letter
