@@ -8,12 +8,12 @@ type DifficultyTypeConverter() =
     inherit JsonConverter<Game.Difficulty>()
 
     override this.Read(reader, _, _) =
-        match Util.fromString<Game.Difficulty> (reader.GetString()) with
+        match DiscriminatedUnion.fromString<Game.Difficulty> (reader.GetString()) with
         | Some value -> value
         | None -> raise (JsonException())
 
     override this.Write(writer, value, _) =
-        writer.WriteStringValue(Util.toString value)
+        writer.WriteStringValue(DiscriminatedUnion.toString value)
 
 type MoveRequest =
     { Field: seq<string>

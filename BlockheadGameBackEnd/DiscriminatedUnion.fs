@@ -1,4 +1,4 @@
-module BlockheadGameBackEnd.Util
+module BlockheadGameBackEnd.DiscriminatedUnion
 
 open Microsoft.FSharp.Reflection
 
