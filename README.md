@@ -11,3 +11,11 @@ docker build -f BlockheadGameBackEnd/Dockerfile -t yaskovdev/block-head-game-bac
 docker run -p 5122:80 -d yaskovdev/block-head-game-back-end
 curl -v http://localhost:5122/api/field
 ```
+
+## Running In Kubernetes Cluster
+
+```shell
+docker image push yaskovdev/block-head-game-back-end
+kubectl run --image yaskovdev/block-head-game-back-end blockhead-game-back-end
+kubectl expose pod blockhead-game-back-end --port=5122 --target-port=80 --name=blockhead-game-back-end
+```
