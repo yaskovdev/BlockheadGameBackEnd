@@ -1,14 +1,14 @@
 # Blockhead Game Back End
 
 ```shell
-curl -v -H "Content-Type: application/json" -d '{ "field": [ ".....", ".....", "БАЛДА", ".....", "....." ], "usedWords": [ "БАЛДА" ],"difficulty": 13 }' http://localhost:5122/api/move-requests
+curl -v -H "Content-Type: application/json" -d '{ "field": [ ".....", ".....", "БАЛДА", ".....", "....." ], "usedWords": [ "БАЛДА" ],"difficulty": "Medium" }' http://localhost:5122/api/move-requests
 ```
 
 ## Running With Docker in Linux Container
 
 ```shell
 docker build -f BlockheadGameBackEnd/Dockerfile -t yaskovdev/block-head-game-back-end .
-docker run -p 5122:80 -d yaskovdev/block-head-game-back-end
+docker run -p 5122:8080 -d yaskovdev/block-head-game-back-end
 curl -v http://localhost:5122/api/field
 ```
 
@@ -18,8 +18,8 @@ Note: in order for this to work, your AKS must be created with `--enable-node-pu
 
 ```shell
 docker image push yaskovdev/block-head-game-back-end
-kubectl run blockhead-game-back-end --image yaskovdev/block-head-game-back-end --port=80
-kubectl expose pod blockhead-game-back-end --type="NodePort" --port=5122 --target-port=80 --name=blockhead-game-back-end
+kubectl run blockhead-game-back-end --image yaskovdev/block-head-game-back-end --port=8080
+kubectl expose pod blockhead-game-back-end --type="NodePort" --port=5122 --target-port=8080 --name=blockhead-game-back-end
 ```
 
 In Azure Portal, you have to go
