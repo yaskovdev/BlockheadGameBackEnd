@@ -47,7 +47,7 @@ let private isUnusedAvailableWord dictionary usedWords field cell letter path =
     Set.contains word dictionary && not (Seq.contains word usedWords)
 
 let private realUnusedAvailableWords (prefixDictionary: Set<string>) (dictionary: Set<string>) (usedWords: seq<string>) (field: Field.Field) =
-    let availableWords = Seq.distinctBy fst (Seq.collect (fun (cell, letter) -> availableWords prefixDictionary field (cell, letter)) (availableMoves field))
+    let availableWords = Seq.distinctBy fst (Seq.collect (availableWords prefixDictionary field) (availableMoves field))
     Seq.filter (fun (path, (cell, letter)) -> isUnusedAvailableWord dictionary usedWords field cell letter path) availableWords
 
 let makeMove prefixDictionary dictionary difficulty usedWords field : bool * Field.Field * string * Path * ((int * int) * char) =

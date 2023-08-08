@@ -18,8 +18,8 @@ Note: in order for this to work, your AKS must be created with `--enable-node-pu
 
 ```shell
 docker image push yaskovdev/block-head-game-back-end
-kubectl run blockhead-game-back-end --image yaskovdev/block-head-game-back-end --port=8080
-kubectl expose pod blockhead-game-back-end --type="NodePort" --port=5122 --target-port=8080 --name=blockhead-game-back-end
+kubectl create deploy blockhead-game-back-end --image yaskovdev/block-head-game-back-end --replicas 3 --port 8080
+kubectl expose deploy blockhead-game-back-end --type="NodePort" --port=5122 --target-port=8080 --name=blockhead-game-back-end
 ```
 
 In Azure Portal, you have to go
