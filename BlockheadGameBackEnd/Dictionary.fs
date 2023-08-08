@@ -9,7 +9,7 @@ let private executableLocation =
     Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
 
 let readDictionary: Set<string> =
-    Set.ofSeq (Seq.cast (File.ReadLines(Path.Combine(executableLocation, "dictionary.txt"))))
+    Set.ofSeq (Seq.cast (File.ReadLines(Path.Combine(executableLocation, "Dictionary.txt"))))
 
 let private prefixes (word: string) =
     Seq.map (fun length -> word[0..length]) [ 0 .. word.Length - 1 ]

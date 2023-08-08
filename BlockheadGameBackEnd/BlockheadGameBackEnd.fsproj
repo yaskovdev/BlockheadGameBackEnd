@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="dictionary.txt" CopyToOutputDirectory="Always" />
+        <Content Include="Dictionary.txt" CopyToOutputDirectory="Always" />
         <Content Include="..\.dockerignore">
             <Link>.dockerignore</Link>
         </Content>
