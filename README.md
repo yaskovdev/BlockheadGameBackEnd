@@ -12,6 +12,16 @@ docker run -p 5122:8080 -d yaskovdev/block-head-game-back-end
 curl -v http://localhost:5122/api/field
 ```
 
+## Running In Azure App Service
+
+```shell
+cd BlockheadGameBackEnd
+dotnet publish -c Release
+dotnet fsi Deploy.fsx
+```
+
+Then you can access the app with `curl -v https://blockhead-game-back-end.azurewebsites.net/api/field`.
+
 ## Running In AKS Using NodePort
 
 Note: in order for this to work, your AKS must be created with `--enable-node-public-ip` parameter.

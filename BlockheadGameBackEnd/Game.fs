@@ -16,8 +16,8 @@ let private contains x = Seq.exists ((=) x)
 let private wordInPath (field: Field.Field) (path: Path) =
     String(Seq.toArray (Seq.map (fun (x, y) -> field[x][y]) path))
 
-let private wordPickRange (difficulty: Difficulty) : int =
-    match difficulty with
+let private wordPickRange =
+    function
     | Easy -> 30
     | Medium -> 13
     | Hard -> 0
